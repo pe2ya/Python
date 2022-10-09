@@ -1,6 +1,9 @@
 class MyList:
     def __init__(self, arr):
-        self.ls = arr
+        if type(list()) == arr:
+            self.ls = arr
+        else:
+            self.ls = [arr]
 
     def len(self):
         result = 0

@@ -1,6 +1,9 @@
 class MyList:
     def __init__(self, arr):
-        self.ls = arr
+        if type(list()) == arr:
+            self.ls = arr
+        else:
+            self.ls = [arr]
 
     def push(self, el):
         if self.check(el):
@@ -40,7 +43,7 @@ class MyList:
         return str(self.ls)
 
 
-a = MyList([1, 2, 3, 5, 6])
+a = MyList(1)
 print(a)
 
 print(a.len())

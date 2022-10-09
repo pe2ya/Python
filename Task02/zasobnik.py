@@ -2,22 +2,22 @@ class MyList:
     def __init__(self, arr):
         self.ls = arr
 
-    def len(self):
-        result = 0
-        for _ in self.ls:
-            result += 1
-
-        return result
-
     def push(self, el):
         if self.check(el):
-            self.ls += [el]
+            self.ls = [el] + self.ls
 
     def pop(self):
         el = self.ls[0]
         del self.ls[0]
 
         return el
+
+    def len(self):
+        result = 0
+        for _ in self.ls:
+            result += 1
+
+        return result
 
     def check(self, el):
         try:
@@ -48,6 +48,6 @@ print(a.len())
 print(a.pop())
 print(a)
 
-a.push(4)
 a.push("b")
+a.push(4)
 print(a)

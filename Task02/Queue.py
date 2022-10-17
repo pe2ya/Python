@@ -70,12 +70,19 @@ class Queue:
         return self.count()
 
     def __getitem__(self, key) -> Node:
-        node = self.node
+        try:
 
-        for _ in range(key):
-            node = node.next
+            node = self.node
 
-        return node.value
+            for _ in range(key):
+                node = node.next
+
+            if node is not None:
+                return node.value
+            else:
+                raise AttributeError("Incorrect key")
+        except AttributeError as e:
+            print(e)
 
     def __setitem__(self, key, value) -> None:
         node = self.node
@@ -83,6 +90,31 @@ class Queue:
             node = node.next
 
         node.value = value
+
+    def __contains__(self, item) -> bool:
+        node = self.node
+        while node is not None:
+            if node.value == item:
+                return True
+
+            node = node.next
+
+        return False
+
+    def __int__(self):
+        return self
+
+    def __next__(self):
+        try:
+            node = self.node
+            if node is not None:
+                result = node.value
+                self.node = self.node.next
+                return result
+            else:
+                raise StopIteration("Queue is empty")
+        except StopIteration as e:
+            print(e)
 
 
 xx = Queue()
@@ -108,3 +140,21 @@ xx[2] = 123121321
 print(xx)
 
 print(xx[1])
+
+if 2 in xx:
+    print("aa")
+
+if 12312 in xx:
+    print("asiojd")
+
+xxx = iter(xx)
+
+print(next(xxx))
+print(next(xxx))
+print(next(xxx))
+print(next(xxx))
+print(next(xxx))
+
+
+
+

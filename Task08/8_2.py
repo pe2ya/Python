@@ -1,5 +1,6 @@
 import re
 
+
 class Zbozi:
     def __init__(self, nazev, cena):
         """
@@ -18,7 +19,6 @@ class Zbozi:
         :return: int
         """
         return self._cena
-
 
 
 class ZlevneneZbozi(Zbozi):
@@ -42,8 +42,7 @@ class ZlevneneZbozi(Zbozi):
         except Exception as e:
             print(e)
 
-
-    def get_cena(self):
+    def get_cena(self) -> float:
         try:
             return self._cena - (self._cena * self._discount)
 
@@ -51,11 +50,6 @@ class ZlevneneZbozi(Zbozi):
             print(e)
 
 
-
 apple = ZlevneneZbozi("apple", 100, 0.7)
 
 print(apple.get_cena())
-
-
-
-

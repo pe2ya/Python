@@ -1,6 +1,6 @@
 class ZvysitelnaUrovenInterface:
 
-    def zvysitUroven(self):
+    def zvysitUroven(self) -> None:
         raise NotImplemented()
 
 
@@ -11,7 +11,7 @@ class Bojovnik(ZvysitelnaUrovenInterface):
 
         self.sila = sila
 
-    def zvysitUroven(self):
+    def zvysitUroven(self) -> None:
         try:
             if self.sila == 3:
                 raise Exception("You have reached limit of your power")
@@ -19,6 +19,7 @@ class Bojovnik(ZvysitelnaUrovenInterface):
             self.sila += 1
         except Exception as e:
             print(e)
+
 
 class Mag(ZvysitelnaUrovenInterface):
     def __init__(self, bilaMagie, cernaMagie):
@@ -30,8 +31,7 @@ class Mag(ZvysitelnaUrovenInterface):
         self.cernaMagie = cernaMagie
         self.bilaMagie = bilaMagie
 
-
-    def zvysitUroven(self):
+    def zvysitUroven(self) -> None:
         try:
             if self.bilaMagie and self.cernaMagie:
                 raise Exception("You learned all magic which you can")
@@ -46,7 +46,6 @@ class Mag(ZvysitelnaUrovenInterface):
             print(e)
 
 
-
 bobik = Bojovnik(1)
 bobik.zvysitUroven()
 print(bobik.sila)
@@ -54,11 +53,3 @@ print(bobik.sila)
 martina = Mag(True, False)
 martina.zvysitUroven()
 print(martina.cernaMagie)
-
-
-
-
-
-
-
-
